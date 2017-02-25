@@ -9,15 +9,16 @@ var config = {
     filename: 'bundle.js'
   },
   module: {
-    loaders: [{
-      test: /\.jsx?$/,
-      exclude: /node_modules/,
-      loader: 'babel',
-      query: {presets:['react','es2015']}
-    }, {
+    loaders: [
+      {
+        test: /\.jsx?$/,
+        exclude: /node_modules/,
+        loader: 'babel-loader'
+      }, {
         test: /\.css$/,
         loader: 'style!css'
-    }]
+      }
+    ]
   }
 };
 
