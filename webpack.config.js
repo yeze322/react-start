@@ -1,22 +1,27 @@
 var path = require('path');
 var config = {
-  entry: [
-      'webpack/hot/dev-server',
-      path.resolve(__dirname, 'app/main.js')
-  ],
+  entry: {
+    app: path.resolve(__dirname, 'app/main.js')
+  },
   output: {
     path: path.resolve(__dirname, 'build'),
     filename: 'bundle.js'
   },
   module: {
-    loaders: [
+    rules: [
       {
         test: /\.jsx?$/,
         exclude: /node_modules/,
-        loader: 'babel-loader'
-      }, {
+        use: [
+          { loader: 'babel-loader' }
+        ]
+      },
+      {
         test: /\.css$/,
-        loader: 'style!css'
+        use: [
+          { loader: 'style-loader' },
+          { loader: 'css-loader' }
+        ]
       }
     ]
   }
